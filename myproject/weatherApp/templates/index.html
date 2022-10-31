@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <title>Title</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --Dark-cyan: hsl(185, 75%, 39%);
+    --Very-dark-desaturated-blue: hsl(229, 23%, 23%);
+    --Dark-grayish-blue: hsl(227, 10%, 46%);
+    --Dark-gray: hsl(0, 0%, 59%);
+}
+body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 18px;
+    font-family: 'Kumbh Sans', sans-serif;
+    min-height: 100vh;
+    background-color: #F8EDE3;
+}
+.container{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card{
+    width: 440px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+
+}
+.wrapper img{
+    width: 100%;
+    overflow: hidden;
+     border-radius: 1rem 1rem  0 0;
+}
+.content img{
+   width: 150px;
+
+}
+.content  h2{
+    font-family: 'Kumbh Sans', sans-serif;
+    color: var(--Very-dark-desaturated-blue);
+    font-size: 36px;
+}
+.content span{
+    font-size: 23px;
+    color: var(--Dark-grayish-blue);
+    font-weight: 400;
+}
+.content p{
+    color: var(--Dark-grayish-blue);
+    margin-top: 1rem;
+
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    margin-top: 15px;
+
+}
+.footer .num {
+
+font-family: 'Kumbh Sans', sans-serif;
+    color: var(--Very-dark-desaturated-blue);
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+.footer p{
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-top: 10px;
+}
+
+
+.m{
+position: absolute;
+     top: 81px;
+     left: 60px;
+     font-family: 'Kumbh Sans', sans-serif;
+     color: var(--Very-dark-desaturated-blue);
+     font-size: 20px;
+     letter-spacing:2px;
+
+}
+.wrapper{
+
+      position: relative;
+
+}
+
+.form-control{
+     position: absolute;
+     top: 130px;
+     left: 100px;
+     font-family: 'Kumbh Sans', sans-serif;
+     color: var(--Very-dark-desaturated-blue);
+     font-size: 12px;
+     padding:10px;
+     letter-spacing:1px;
+}
+.btn-btn-primary{
+     position: absolute;
+     top: 130px;
+     left: 240px;
+     font-family: 'Kumbh Sans', sans-serif;
+     color: var(--Very-dark-desaturated-blue);
+     font-size: 12px;
+     padding:10px;
+     -spacing:1px;
+}
+@media only screen and (max-width: 768px){
+.card{
+      width:305px;
+}
+.m{
+       top: 51px;
+       left: 30px;
+       font-size: 15px;
+       letter-spacing:1px;
+
+}
+.form-control{
+
+       top: 100px;
+       left: 30px;
+       font-size: 12px;
+       padding:8px;
+       letter-spacing:1px;
+}
+.btn-btn-primary{
+
+       top: 100px;
+       left: 170px;
+       font-size: 12px;
+       padding:8px;
+       letter-spacing:1px;
+}
+
+.footer{
+       display: flex;
+       justify-content: space-between;
+       padding: 1rem;
+       border-top: 0px solid hsl(0, 0%, 79% );
+       margin-top: 15px;
+
+}
+.footer .num {
+
+font-family: 'Kumbh Sans', sans-serif;
+       color: var(--Very-dark-desaturated-blue);
+       font-size: 15px;
+       font-weight: bold;
+       letter-spacing: 0px;
+}
+.footer p{
+       font-size: 10px;
+       letter-spacing: 1px;
+       margin-top: 10px;
+}
+}
+</style>
+<body>
+{% load static %}
+<form method="post">
+    {% csrf_token %}
+  <div class="container">
+  <div class="card">
+      <div class="wrapper">
+          {% load static %}
+          <img src="{% static 'cardbg.jpg' %}" class="image">
+          <p class="m">Weather forecast in your city</p>
+          <input type="text" class="form-control" name="city" placeholder="Choose your city......"><span><button type="submit" class="btn-btn-primary">Search <i class="fa-solid fa-magnifying-glass" style=" color:#8BBCCC;"></i></button></span>
+      </div>
+
+
+      <div class="content">
+          <img src="http://openweathermap.org/img/w/{{icon}}.png">
+          <h2>{{temp}}</h2>
+          <p>{{name}} </p>
+          <p>{{main}}</p>
+
+        <div class="footer">
+          <div>
+              <p class="num">{{pressure}}</p>
+              <P><i class="fa-solid fa-wind" style="font-size: 35px; color:#8BBCCC;"></i></P>
+              <p>air pressure</p>
+          </div>
+          <div>
+              <p class="num">{{description}}</p>
+              <p><i class="fa-solid fa-cloud-bolt" style="font-size: 35px; color:#8BBCCC;"></i></p>
+              <p>description</p>
+          </div>
+          <div>
+              <p class="num">{{humidity}}</p>
+              <p><i class="fa-solid fa-droplet" style="font-size: 35px; color:#8BBCCC;"></i></p>
+              <p>humidity</p>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  </div>
+  </div>
+</form>
+</body>
+</html>

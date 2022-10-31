@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <div class="input-group">
+    <input type="text" class="form-control" name="city" placeholder="Choose your city......">
+     <div class="input-group-button">
+         <button type="submit" class="btn-btn-primary">SEARCH</button>
+     </div>
+    </div>
+
+    <h1>City Name : {{name}} </h1>
+    <h3>Country code : {{country_code}}</h3>
+    <h3>Coordinates : {{coordinate}}</h3>
+    <h3>Tempreture in celcius : {{temp}}</h3>
+    <h3>pressure : {{pressure}}</h3>
+    <h3>humidity : {{humidity}}</h3>
+    <h3>forcast : {{main}} </h3>
+    <h3><img src="http://openweathermap.org/img/w/{{icon}}.png" style="width:89px;"></h3>
+    <h4>description : {{description}}</h4>
+    <h4>timezone : {{timezone}}</h4>
+
+</form>
+</body>
+
+</html>
